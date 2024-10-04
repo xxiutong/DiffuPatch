@@ -1,0 +1,23 @@
+CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=1 --use_env run_train.py \
+--diff_steps 4000 \
+--lr 0.0001 \
+--learning_steps 300000 \
+--save_interval 5000 \
+--seed 102 \
+--noise_schedule sqrt \
+--hidden_dim 64 \
+--bsz 128 \
+--microbatch 128 \
+--dataset bugfix \
+--data_dir datasets/bugfix \
+--learned_mean_embed True \
+--denoise True \
+--vocab datasets/bugfix/vocab.txt \
+--seq_len 128 \
+--use_fp16 \
+--denoise_rate 0.5 \
+--encoder_nums 12 \
+--schedule_sampler lossaware \
+--notes bugfix \
+--reg_rate 0.0005 \
+#--resume_checkpoint diffusion_models/diffuseq_bugfixlen_h128_lr0.0001_t2000_sqrt_lossaware_seed102_bugfixlen20231114-23:44:08/ema_0.9999_200000.pt
